@@ -17,8 +17,16 @@ async function bootstrap() {
 
   /* http://localhost:5173 */
 
-  app.enableCors({
+  /*   app.enableCors({
     origin: 'https://reactjs-cicd-frontend.onrender.com',
+    credentials: true,
+  }); */
+
+  app.enableCors({
+    origin: [
+      'http://localhost:5173', // local dev
+      'https://reactjs-cicd-frontend.onrender.com', // ✅ LIVE FRONTEND
+    ],
     credentials: true,
   });
 
