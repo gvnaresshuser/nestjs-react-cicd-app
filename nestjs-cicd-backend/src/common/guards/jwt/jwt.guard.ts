@@ -13,7 +13,7 @@ type JwtPayload = {
 
 @Injectable()
 export class JwtGuard implements CanActivate {
-  constructor(private config: ConfigService) {}
+  constructor(private config: ConfigService) { }
 
   async canActivate(ctx: ExecutionContext): Promise<boolean> {
     const req = ctx.switchToHttp().getRequest();
@@ -23,7 +23,8 @@ export class JwtGuard implements CanActivate {
       req.headers.authorization?.split(' ')[1]; */
 
     //Change priority to Authorization header first
-    const token = req.headers.authorization?.split(' ')[1] || req.cookies?.accessToken;
+    //const token = req.headers.authorization?.split(' ')[1] || req.cookies?.accessToken;
+    const token = req.cookies?.accessToken;
 
     console.log('TOKEN USED:', token);
 
