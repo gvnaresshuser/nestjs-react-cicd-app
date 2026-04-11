@@ -7,16 +7,16 @@ export default function Users() {
     const [users, setUsers] = useState([]);
     const [timer, setTimer] = useState(0);
     const [currentUser, setCurrentUser] = useState(null);
-    const [ip, setIp] = useState('');
+    //const [ip, setIp] = useState('');
 
-    const getCurrentUser = async () => {
-        try {
-            const res = await api.get('/users/me');
-            console.log('Current User:', res.data);
-        } catch (err) {
-            console.error(err);
-        }
-    };
+    /*     const getCurrentUser = async () => {
+            try {
+                const res = await api.get('/users/me');
+                console.log('Current User:', res.data);
+            } catch (err) {
+                console.error(err);
+            }
+        }; */
 
     // ✅ Fetch users with timer
     const getUsers = async () => {
@@ -36,19 +36,19 @@ export default function Users() {
             }
         }
     };
-    useEffect(() => {
-        const fetchIp = async () => {
-            try {
-                const res = await api.get('/users/ip');
-                //console.log("IP ADDRESS:"+res.data);
-                setIp(res.data.data);
-            } catch (err) {
-                console.error(err);
-            }
-        };
-
-        fetchIp();
-    }, []);
+    /*     useEffect(() => {
+            const fetchIp = async () => {
+                try {
+                    const res = await api.get('/users/ip');
+                    //console.log("IP ADDRESS:"+res.data);
+                    setIp(res.data.data);
+                } catch (err) {
+                    console.error(err);
+                }
+            };
+    
+            fetchIp();
+        }, []); */
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -131,12 +131,12 @@ export default function Users() {
                     </span>
                 </p>
                 {/* ✅ NEW: IP DISPLAY */}
-                <p className="text-gray-600">
+                {/* <p className="text-gray-600">
                     IP Address:
                     <span className="ml-2 font-semibold text-blue-600">
                         {ip}
                     </span>
-                </p>
+                </p> */}
 
             </div>
             {/* ACTION BUTTONS */}
