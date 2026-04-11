@@ -1,0 +1,1 @@
+ALTER TABLE "nestjs_users" ADD COLUMN "last_activity" timestamp DEFAULT now();

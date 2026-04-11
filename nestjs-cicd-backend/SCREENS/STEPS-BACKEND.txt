@@ -1,0 +1,304 @@
+*************************************
+pnpm dlx @nestjs/cli new nestjs-cicd-backend
+select pnpm
+cd nestjs-cicd-backend
+
+Run project:
+pnpm run start:dev
+pnpm start:dev
+*************************************
+http://localhost:3000
+========================================================================================
+pnpm install
+========================================================================================
+ESLINT:
+------
+Delete eslint.config.mjs file...kept in SCREENS folder
+USE->eslint.config.mts file
+========================================================================================
+.prettierrc - BEFORE
+{
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+-------
+.prettierrc - AFTER
+{
+  "singleQuote": true,
+  "semi": true,
+  "trailingComma": "all",
+  "printWidth": 100
+}
+
+========================================================================================
+package.json
+ADDED
+"test:integration:cov": "jest src/**/*.integration.spec.ts --coverage",
+"test:all:cov": "jest --coverage",
+"test:integration": "jest src/**/*.integration.spec.ts"
+========================================================================================
+tsconfig.json
+ADDED
+"types": ["node", "jest"]
+========================================================================================
+🚀 STEP 2: Initialize ESLint
+
+Run:
+
+pnpm dlx eslint --init
+========================================================================================
+Choose options:
+✔ How would you like to use ESLint → To check syntax, find problems
+✔ Modules → JavaScript modules (import/export)
+✔ Framework → None (NestJS uses Node, not React)
+✔ TypeScript → Yes
+✔ Where does code run → Node
+✔ Config format → JSON
+===============================================================================================
+❌ Delete this:
+eslint.config.mjs
+===============================================================================================
+
+E:\MURALI\NEST-JS\cicd-project\nestjs-cicd-backend>pnpm dlx eslint --init
+You can also run this command directly using 'npm init @eslint/config@latest'.
+
+> nestjs-cicd-backend@0.0.1 npx
+> create-config
+
+@eslint/create-config: v1.11.0
+
+√ What do you want to lint? · javascript
+√ How would you like to use ESLint? · problems
+√ What type of modules does your project use? · esm
+√ Which framework does your project use? · none
+√ Does your project use TypeScript? · No / Yes
+√ Where does your code run? · node
+√ Which language do you want your configuration file be written in? · ts
+i Jiti is required for Node.js <24.3.0 to read TypeScript configuration files.
+√ Would you like to add Jiti as a devDependency? · No / Yes
+i The config that you've selected requires the following dependencies:
+
+eslint, @eslint/js, globals, typescript-eslint, jiti
+√ Would you like to install them now? · No / Yes
+√ Which package manager do you want to use? · pnpm
+☕️Installing...
+ WARN  5 deprecated subdependencies found: @esbuild-kit/core-utils@3.3.2, @esbuild-kit/esm-loader@2.6.5, glob@10.5.0, glob@7.2.3, inflight@1.0.6
+Packages: +10 -9
+++++++++++---------
+Progress: resolved 835, reused 745, downloaded 0, added 10, done
+
+devDependencies:
++ jiti 2.6.1
+
+╭ Warning ─────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                      │
+│   Ignored build scripts: @nestjs/core@11.1.18, @scarf/scarf@1.4.0, bcrypt@6.0.0, esbuild@0.18.20, esbuild@0.25.12,   │
+│   esbuild@0.27.7, unrs-resolver@1.11.1.                                                                              │
+│   Run "pnpm approve-builds" to pick which dependencies should be allowed to run scripts.                             │
+│                                                                                                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Done in 5m 9.8s using pnpm v10.32.1
+√ Successfully created E:\MURALI\NEST-JS\cicd-project\nestjs-cicd-backend\eslint.config.mts file.
+
+E:\MURALI\NEST-JS\cicd-project\nestjs-cicd-backend>
+===============================================================================================
+After init, replace .eslintrc.json with this (best for NestJS):
+E:\MURALI\NEST-JS\cicd-project\nestjs-cicd-backend\eslint.config.mts
+========================================================================================
+ADD THIS IN package.json
+    "lint:check": "eslint \"{src,apps,libs,test}/**/*.ts\"",
+========================================================================================
+*************
+pnpm run lint
+*************
+========================================================================================
+OUTPUT:
+------
+E:\MURALI\NEST-JS\cicd-project\nestjs-cicd-backend>pnpm run lint
+
+> nestjs-cicd-backend@0.0.1 lint E:\MURALI\NEST-JS\cicd-project\nestjs-cicd-backend
+> eslint "{src,apps,libs,test}/**/*.ts" --fix
+
+
+E:\MURALI\NEST-JS\cicd-project\nestjs-cicd-backend\src\app.module.ts
+  14:10  warning  'NestModule' is defined but never used. Allowed unused vars must match /^_/u          @typescript-eslint/no-unused-vars
+  15:10  warning  'ActivityMiddleware' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+E:\MURALI\NEST-JS\cicd-project\nestjs-cicd-backend\src\common\guards\idle-timeout\idle-timeout.guard.ts
+  35:11  warning  'diffMinutes' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+E:\MURALI\NEST-JS\cicd-project\nestjs-cicd-backend\src\common\middleware\activity\activity.middleware.ts
+  24:14  warning  'err' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\MURALI\NEST-JS\cicd-project\nestjs-cicd-backend\src\modules\auth\auth.controller.ts
+  142:14  warning  'err' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 5 problems (0 errors, 5 warnings)
+
+
+E:\MURALI\NEST-JS\cicd-project\nestjs-cicd-backend>
+========================================================================================
+ALL WARNINGS RECTIFIED---ESLINT DONE!
+========================================================================================
+
+pnpm run lint
+
+E:\MURALI\NEST-JS\cicd-project\nestjs-cicd-backend>pnpm run lint
+> nestjs-cicd-backend@0.0.1 lint E:\MURALI\NEST-JS\cicd-project\nestjs-cicd-backend
+> eslint "{src,apps,libs,test}/**/*.ts" --fix
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+========================================================================================
+Microsoft Windows [Version 10.0.26100.8039]
+(c) Microsoft Corporation. All rights reserved.
+
+E:\MURALI\NEST-JS\cicd-project>pnpm dlx @nestjs/cli new nestjs-cicd-backend
+✨  We will scaffold your app in a few seconds..
+
+√ Which package manager would you ❤️  to use? pnpm
+CREATE nestjs-cicd-backend/.prettierrc (56 bytes)
+CREATE nestjs-cicd-backend/eslint.config.mjs (934 bytes)
+CREATE nestjs-cicd-backend/nest-cli.json (179 bytes)
+CREATE nestjs-cicd-backend/package.json (2060 bytes)
+CREATE nestjs-cicd-backend/README.md (5134 bytes)
+CREATE nestjs-cicd-backend/tsconfig.build.json (101 bytes)
+CREATE nestjs-cicd-backend/tsconfig.json (702 bytes)
+CREATE nestjs-cicd-backend/src/app.controller.ts (286 bytes)
+CREATE nestjs-cicd-backend/src/app.module.ts (259 bytes)
+CREATE nestjs-cicd-backend/src/app.service.ts (150 bytes)
+CREATE nestjs-cicd-backend/src/main.ts (236 bytes)
+CREATE nestjs-cicd-backend/src/app.controller.spec.ts (639 bytes)
+CREATE nestjs-cicd-backend/test/jest-e2e.json (192 bytes)
+CREATE nestjs-cicd-backend/test/app.e2e-spec.ts (754 bytes)
+
+√ Installation in progress... ☕
+
+🚀  Successfully created project nestjs-cicd-backend
+👉  Get started with the following commands:
+
+$ cd nestjs-cicd-backend
+$ pnpm run start
+
+
+                          Thanks for installing Nest 🙏
+                 Please consider donating to our open collective
+                        to help us maintain this package.
+
+
+               🍷  Donate: https://opencollective.com/nest
+
+
+E:\MURALI\NEST-JS\cicd-project>
+========================================================================================
+
+E:\MURALI\NEST-JS\cicd-project\nestjs-cicd-backend>pnpm install
+ WARN  5 deprecated subdependencies found: @esbuild-kit/core-utils@3.3.2, @esbuild-kit/esm-loader@2.6.5, glob@10.5.0, glob@7.2.3, inflight@1.0.6
+Packages: +129 -31
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-----------------------
+Progress: resolved 834, reused 742, downloaded 2, added 129, done
+
+dependencies:
++ @nestjs/config 4.0.4
++ @nestjs/throttler 6.5.0
++ axios 1.15.0
++ bcrypt 6.0.0
++ class-transformer 0.5.1
++ class-validator 0.15.1
++ cookie-parser 1.4.7
++ dotenv 17.4.1
++ drizzle-kit 0.31.10
++ drizzle-orm 0.45.2
++ helmet 8.1.0
++ jsonwebtoken 9.0.3
++ nest-winston 1.10.2
++ nodemailer 8.0.5
++ pg 8.20.0
++ uuid 13.0.0
++ winston 3.19.0
++ winston-daily-rotate-file 5.0.0
+
+devDependencies:
++ @nestjs/swagger 11.2.7
++ @types/bcrypt 6.0.0
++ @types/jsonwebtoken 9.0.10
+- @types/node 24.12.2
++ @types/node 22.19.17 (25.6.0 is available)
++ @types/nodemailer 7.0.11 (8.0.0 is available)
++ @types/pg 8.20.0
+- @types/supertest 7.2.0
++ @types/supertest 6.0.3 (7.2.0 is available)
+- globals 17.4.0
++ globals 16.5.0 (17.4.0 is available)
++ swagger-ui-express 5.0.1
+
+╭ Warning ─────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                      │
+│   Ignored build scripts: @nestjs/core@11.1.18, @scarf/scarf@1.4.0, bcrypt@6.0.0, esbuild@0.18.20, esbuild@0.25.12,   │
+│   esbuild@0.27.7, unrs-resolver@1.11.1.                                                                              │
+│   Run "pnpm approve-builds" to pick which dependencies should be allowed to run scripts.                             │
+│                                                                                                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Done in 7m 23.6s using pnpm v10.32.1
+
+E:\MURALI\NEST-JS\cicd-project\nestjs-cicd-backend>
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
+========================================================================================
