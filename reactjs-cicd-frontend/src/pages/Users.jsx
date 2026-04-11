@@ -9,7 +9,7 @@ export default function Users() {
     const [currentUser, setCurrentUser] = useState(null);
     //const [ip, setIp] = useState('');
 
-    /*     const getCurrentUser = async () => {
+   /*      const getCurrentUser = async () => {
             try {
                 const res = await api.get('/users/me');
                 console.log('Current User:', res.data);

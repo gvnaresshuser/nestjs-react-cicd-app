@@ -17,23 +17,6 @@ export class AuthController {
     private usersService: UsersService,
   ) {}
 
-  /*     @Post('login')
-        async login(@Body() body: LoginDto, @Res({ passthrough: true }) res: Response) {
-            const tokens = this.authService.generateTokens(body);
-    
-            res.cookie('accessToken', tokens.accessToken, {
-                httpOnly: true,
-                secure: false,
-                sameSite: 'strict',
-            });
-    
-            res.cookie('refreshToken', tokens.refreshToken, {
-                httpOnly: true,
-                secure: false,
-            });
-    
-            return { message: 'Login successful', tokens };
-        } */
   /*
     This method handles:
      User authentication (email + password)
@@ -78,7 +61,7 @@ export class AuthController {
     const tokens = this.authService.generateTokens(user);
 
     // ✅ STEP 4: Set cookies
-    res.cookie('accessToken', tokens.accessToken, {
+    /* res.cookie('accessToken', tokens.accessToken, {
       httpOnly: true,
       secure: false,
       sameSite: 'strict',
@@ -87,6 +70,19 @@ export class AuthController {
     res.cookie('refreshToken', tokens.refreshToken, {
       httpOnly: true,
       secure: false,
+    }); */
+    res.cookie('accessToken', tokens.accessToken, {
+      httpOnly: true,
+      secure: true, // ✅ MUST for HTTPS (Render)
+      sameSite: 'none', // ✅ MUST for cross-origin
+      path: '/',
+    });
+
+    res.cookie('refreshToken', tokens.refreshToken, {
+      httpOnly: true,
+      secure: true, // ✅ MUST
+      sameSite: 'none', // ✅ MUST
+      path: '/',
     });
 
     return {
@@ -126,7 +122,7 @@ export class AuthController {
       const tokens = this.authService.generateTokens(user); //NEW SET OF TOKENS
 
       // ✅ set new access token
-      res.cookie('accessToken', tokens.accessToken, {
+      /* res.cookie('accessToken', tokens.accessToken, {
         httpOnly: true,
         sameSite: 'strict',
         path: '/',
@@ -135,6 +131,19 @@ export class AuthController {
       // OPTIONAL: rotate refresh token
       res.cookie('refreshToken', tokens.refreshToken, {
         httpOnly: true,
+        path: '/',
+      }); */
+      res.cookie('accessToken', tokens.accessToken, {
+        httpOnly: true,
+        secure: true, // ✅ MUST for HTTPS (Render)
+        sameSite: 'none', // ✅ MUST for cross-origin
+        path: '/',
+      });
+
+      res.cookie('refreshToken', tokens.refreshToken, {
+        httpOnly: true,
+        secure: true, // ✅ MUST
+        sameSite: 'none', // ✅ MUST
         path: '/',
       });
 
