@@ -13,7 +13,7 @@ type JwtPayload = {
 
 @Injectable()
 export class JwtGuard implements CanActivate {
-  constructor(private config: ConfigService) { }
+  constructor(private config: ConfigService) {}
 
   async canActivate(ctx: ExecutionContext): Promise<boolean> {
     const req = ctx.switchToHttp().getRequest();
