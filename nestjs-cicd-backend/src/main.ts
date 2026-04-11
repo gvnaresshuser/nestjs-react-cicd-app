@@ -15,8 +15,10 @@ async function bootstrap() {
   app.use(cookieParser());
   app.use(helmet());
 
+  /* http://localhost:5173 */
+
   app.enableCors({
-    origin: 'http://localhost:5173',
+    origin: 'https://reactjs-cicd-frontend.onrender.com',
     credentials: true,
   });
 
