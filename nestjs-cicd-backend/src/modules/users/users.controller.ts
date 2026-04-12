@@ -8,7 +8,7 @@ import {
   Delete,
   Param,
   Patch,
-  //UseInterceptors,
+  UseInterceptors,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { JwtGuard } from '../../common/guards/jwt/jwt.guard';
@@ -19,12 +19,12 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { Throttle } from '@nestjs/throttler';
 import { MyLoggerService } from '../../common/logger/my-logger/my-logger.service';
 import { IdleTimeoutGuard } from '../../common/guards/idle-timeout/idle-timeout.guard';
-//import { ActivityInterceptor } from '../../common/interceptors/activity/activity.interceptor';
+import { ActivityInterceptor } from '../../common/interceptors/activity/activity.interceptor';
 import { GetIp } from '../../common/decorators/ipaddress.decorator';
 import type { User } from '../../common/interfaces/user.interface';
 
-//@UseGuards(JwtGuard, IdleTimeoutGuard)
-//@UseInterceptors(ActivityInterceptor) // ✅ APPLY HERE
+@UseGuards(JwtGuard, IdleTimeoutGuard)
+@UseInterceptors(ActivityInterceptor) // ✅ APPLY HERE
 @Controller('users')
 export class UsersController {
   constructor(

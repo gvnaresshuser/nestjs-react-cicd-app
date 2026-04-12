@@ -75,14 +75,14 @@ export class AuthController {
       httpOnly: true,
       secure: true, // ✅ MUST for HTTPS (Render)
       sameSite: 'none', // ✅ MUST for cross-origin
-      //path: '/',
+      path: '/',
     });
 
     res.cookie('refreshToken', tokens.refreshToken, {
       httpOnly: true,
       secure: true, // ✅ MUST
       sameSite: 'none', // ✅ MUST
-      //path: '/',
+      path: '/',
     });
 
     return {
@@ -137,14 +137,14 @@ export class AuthController {
         httpOnly: true,
         secure: true, // ✅ MUST for HTTPS (Render)
         sameSite: 'none', // ✅ MUST for cross-origin
-        //path: '/',
+        path: '/',
       });
 
       res.cookie('refreshToken', tokens.refreshToken, {
         httpOnly: true,
         secure: true, // ✅ MUST
         sameSite: 'none', // ✅ MUST
-        //path: '/',
+        path: '/',
       });
 
       return { message: 'Token refreshed' };
