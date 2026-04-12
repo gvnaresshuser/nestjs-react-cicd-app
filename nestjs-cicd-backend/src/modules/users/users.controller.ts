@@ -59,7 +59,7 @@ export class UsersController {
   @Get()
   findAll(@Query('limit') limit: string, @Query('offset') offset: string) {
     console.log('GOING TO LOG...');
-    this.logger.log('Fetching all users');
+    this.logger.log('Fetching all users...NOW');
     this.logger.warn('This is a warning');
     this.logger.debug('Debugging users API');
     this.logger.error('ERROR users API updated....');

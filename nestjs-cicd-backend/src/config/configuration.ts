@@ -5,11 +5,11 @@ export default () => ({
   jwt: {
     secret: process.env.JWT_SECRET,
     //accessExpires: '15m',
-    //accessExpires: '45m',
-    //refreshExpires: '7d',
+    accessExpires: '45m',
+    refreshExpires: '7d',
 
-    accessExpires: '10s',
-    refreshExpires: '10m',
+    //accessExpires: '10s',
+    //refreshExpires: '10m',
   },
   mail: {
     user: process.env.EMAIL, // ✅ FIX
