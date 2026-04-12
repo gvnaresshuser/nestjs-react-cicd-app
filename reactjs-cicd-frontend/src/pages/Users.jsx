@@ -7,7 +7,7 @@ export default function Users() {
     const [users, setUsers] = useState([]);
     const [timer, setTimer] = useState(0);
     const [currentUser, setCurrentUser] = useState(null);
-    //const [ip, setIp] = useState('');
+    const [ip, setIp] = useState('');
 
    /*      const getCurrentUser = async () => {
             try {
