@@ -52,7 +52,7 @@ api.interceptors.response.use(
             message === 'Session expired due to inactivity' ||
             message === 'Invalid token' ||
             message === 'No token provided'
-            || message === 'Token expired'
+            //|| message === 'Token expired'
             //--comment for Refresh Token and get new access token --uncomment for redirect to login
             //IF UNCOMMENTED IT WILL REDIRECT TO LOGIN PAGE, 
             //ELSE IT WILL REFRESH TOKEN - NEW ACCESS TOKEN WILL BE GENERATED
