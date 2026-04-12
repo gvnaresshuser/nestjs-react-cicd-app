@@ -38,7 +38,7 @@ export class IdleTimeoutGuard implements CanActivate {
     // ⏳ 30 minutes idle timeout
     //if (diffMinutes > 30) {
     //if (diffMinutes > 0.1) {  // ~6 seconds for testing
-    if (diffSeconds > 10) {
+    if (diffSeconds > 300) {
       // ✅ 10 seconds
       //if (diffSeconds > 300) { // 5 minutes
       throw new UnauthorizedException('Session expired due to inactivity');
