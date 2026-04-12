@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <div className="min-h-screen bg-gray-100 p-5">
         <h1 className="text-2xl font-bold mb-5 text-center">
-          🔐 CI/CD - React JS-Nest JS App!
+          🔐 CI/CD - React JS-Nest JS App*
         </h1>
 
         {/* Navigation */}
