@@ -35,6 +35,7 @@ export class UsersController {
   //--------------- CUSTOM DECORATORS ------------------
   @Get('me')
   getMe(@GetUser() user: User) {
+    console.log('GetUser - DECORATOR:' + user);
     return user;
   }
 
