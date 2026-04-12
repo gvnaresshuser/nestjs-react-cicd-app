@@ -36,7 +36,7 @@ export default function Users() {
             }
         }
     };
-    /*     useEffect(() => {
+        useEffect(() => {
             const fetchIp = async () => {
                 try {
                     const res = await api.get('/users/ip');
@@ -48,7 +48,7 @@ export default function Users() {
             };
     
             fetchIp();
-        }, []); */
+        }, []);
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -131,12 +131,12 @@ export default function Users() {
                     </span>
                 </p>
                 {/* ✅ NEW: IP DISPLAY */}
-                {/* <p className="text-gray-600">
+                <p className="text-gray-600">
                     IP Address:
                     <span className="ml-2 font-semibold text-blue-600">
                         {ip}
                     </span>
-                </p> */}
+                </p>
 
             </div>
             {/* ACTION BUTTONS */}
