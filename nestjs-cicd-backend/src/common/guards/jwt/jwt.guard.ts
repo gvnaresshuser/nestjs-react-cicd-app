@@ -26,7 +26,7 @@ export class JwtGuard implements CanActivate {
     //const token = req.headers.authorization?.split(' ')[1] || req.cookies?.accessToken;
     const token = req.cookies?.accessToken;
 
-    console.log('TOKEN USED FROM REQ COOKIES...:', token);
+    console.log('TOKEN USED FROM REQ COOKIES...!!!:', token);
 
     // ❌ NO TOKEN
     if (!token) {
