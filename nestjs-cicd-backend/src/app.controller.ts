@@ -4,7 +4,7 @@ import { Controller, Get } from '@nestjs/common';
 export class AppController {
   @Get()
   getHello() {
-    return { message: 'NestJS Advanced App Running!!! 🚀' };
+    return { message: 'NestJS Advanced App Running!!!hello 🚀' };
   }
 }
 //--------------------------------------------------------
