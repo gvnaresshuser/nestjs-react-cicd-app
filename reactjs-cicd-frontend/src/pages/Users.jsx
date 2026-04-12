@@ -9,14 +9,17 @@ export default function Users() {
     const [currentUser, setCurrentUser] = useState(null);
     const [ip, setIp] = useState('');
 
-   /*      const getCurrentUser = async () => {
-            try {
-                const res = await api.get('/users/me');
-                console.log('Current User:', res.data);
-            } catch (err) {
-                console.error(err);
-            }
-        }; */
+    /*
+    //NO USING THIS FUNCTION   
+       const getCurrentUser = async () => {
+             try {
+                 const res = await api.get('/users/me');
+                 console.log('Current User:', res.data);
+             } catch (err) {
+                 console.error(err);
+             }
+         }; 
+         */
 
     // ✅ Fetch users with timer
     const getUsers = async () => {
@@ -36,19 +39,19 @@ export default function Users() {
             }
         }
     };
-        useEffect(() => {
-            const fetchIp = async () => {
-                try {
-                    const res = await api.get('/users/ip');
-                    //console.log("IP ADDRESS:"+res.data);
-                    setIp(res.data.data);
-                } catch (err) {
-                    console.error(err);
-                }
-            };
-    
-            fetchIp();
-        }, []);
+    useEffect(() => {
+        const fetchIp = async () => {
+            try {
+                const res = await api.get('/users/ip');
+                //console.log("IP ADDRESS:"+res.data);
+                setIp(res.data.data);
+            } catch (err) {
+                console.error(err);
+            }
+        };
+
+        fetchIp();
+    }, []);
 
     useEffect(() => {
         const fetchUser = async () => {
