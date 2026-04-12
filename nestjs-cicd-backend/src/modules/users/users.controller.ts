@@ -52,7 +52,7 @@ export class UsersController {
 
   //@Throttle('short')
   //@Throttle('long')
-  @Throttle({ short: { ttl: 1000, limit: 1 } }) //overriding manually
+  @Throttle({ short: { ttl: 1000, limit: 10 } }) //overriding manually
   //@UseGuards(JwtGuard)
   /*  @UseGuards(JwtGuard, IdleTimeoutGuard)   // ✅ ADD THIS    
      @UseInterceptors(ActivityInterceptor) */
