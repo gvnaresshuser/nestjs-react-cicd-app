@@ -9,7 +9,7 @@ export default () => ({
     //refreshExpires: '7d',
 
     accessExpires: '10s',
-    refreshExpires: '10m',
+    refreshExpires: '1m',
   },
   mail: {
     user: process.env.EMAIL, // ✅ FIX
