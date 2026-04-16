@@ -8,17 +8,23 @@ import { TransformInterceptor } from './common/interceptors/transform/transform.
 import { LoggingInterceptor } from './common/interceptors/logging/logging.interceptor';
 import { HttpExceptionFilter } from './common/filters/http-exception/http-exception.filter';
 //import { AllExceptionFilter } from './common/filters/all-exception/all-exception.filter';
+import { ConfigService } from '@nestjs/config'; // ✅ ADD
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
+  const configService = app.get(ConfigService); // ✅ GET CONFIG
+  const frontendUrl = configService.get<string>('FRONTEND_URL'); // ✅ READ ENV
+  console.warn('frontendUrl::', frontendUrl);
   app.use(cookieParser());
   app.use(helmet());
+  /*
+  origin: [
+    'https://reactjs-cicd-frontend.onrender.com', // ✅ LIVE FRONTEND
+  ], 
+  */
 
   app.enableCors({
-    origin: [
-      'https://reactjs-cicd-frontend.onrender.com', // ✅ LIVE FRONTEND
-    ],
+    origin: [frontendUrl], // ✅ NOW FROM ENV
     credentials: true,
   });
 
