@@ -7,7 +7,7 @@ import SendMail from './pages/SendMail';
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-green-300 p-5">
+      <div className="min-h-screen bg-red-300 p-5">
         <h1 className="text-2xl font-bold mb-5 text-center">
           🔐 CI/CD - React JS-Nest JS App-17-04-2026
         </h1>
